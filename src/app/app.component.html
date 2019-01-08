@@ -15,7 +15,9 @@
             </ul>
             <form action="" class="form-inline my-2 my-lg-0">
               <a href="javascript:void(0)" class="nav-link" [routerLink]="['/home']" routerLinkActive="active" >Home</a>
-              <a href="javascript:void(0)" class="nav-link" [routerLink]="['/signup']" >SignUp</a>
+              <a href="javascript:void(0)" class="nav-link" [routerLink]="['/signup']" *ngIf="!currentStatus.status" >SignUp</a>
+              <a href="javascript:void(0)" class="nav-link" [routerLink]="['/login']" *ngIf="!currentStatus.status"  >LogIn</a>
+              <a href="javascript:void(0)" class="nav-link" (click)="logout()" [routerLink]="['/login']" *ngIf="currentStatus.status"  >LogOut</a>
 
             </form>
 

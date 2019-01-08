@@ -10,6 +10,10 @@ import { HomeComponent } from './home/home.component';
 import {ROUTES} from './app.route';
 import {UserService} from './user.service';
 import {HttpClientModule} from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
+import {AuthGuard} from './auth.guard';
+import {LoginAuthService} from './login-auth.service';
 
 
 @NgModule({
@@ -17,7 +21,9 @@ import {HttpClientModule} from '@angular/common/http';
     AppComponent,
     UserdashboardComponent,
     SignupComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent,
+    AdmindashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +31,7 @@ import {HttpClientModule} from '@angular/common/http';
     HttpClientModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [UserService],
+  providers: [UserService, AuthGuard, LoginAuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,14 +3,14 @@ import {LoginAuthService} from '../login-auth.service';
 import {UserService} from '../user.service';
 
 @Component({
-  selector: 'app-userdashboard',
-  templateUrl: './userdashboard.component.html',
-  styleUrls: ['./userdashboard.component.css']
+  selector: 'app-admindashboard',
+  templateUrl: './admindashboard.component.html',
+  styleUrls: ['./admindashboard.component.css']
 })
-export class UserdashboardComponent implements OnInit {
+export class AdmindashboardComponent implements OnInit {
 
   public loginuser: any = {};
-  public user: any = {};
+  public users: any = [];
 
   constructor(private authService: LoginAuthService, private userService: UserService) {
     this.authService.isLoggedIn();
@@ -18,7 +18,9 @@ export class UserdashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getAllUsers(this.loginuser.token).subscribe(user => { this.user = user; });
+    this.userService.getAllUsers(this.loginuser.token).subscribe(
+      users => {this.users = users; }
+    );
   }
 
 }
