@@ -9,6 +9,7 @@ import {RouterModule} from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import {ROUTES} from './app.route';
 import {UserService} from './user.service';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -21,6 +22,7 @@ import {UserService} from './user.service';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [UserService],

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-signup',
@@ -9,12 +10,14 @@ export class SignupComponent implements OnInit {
 
   public user: any  = {};
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
   }
 
-  saveUser(user:any){
-
+  saveUser(user: any, userForm: any ) {
+   this.userService.saveUser(user).subscribe(
+     (response) => { if (response) { console.log(response); userForm.reset(); } }
+   );
   }
 }
